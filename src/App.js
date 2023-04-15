@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Employee from "./Employee";
+import data from "./data";
+import { v4 as uuidv4 } from "uuid";
+import Header from "./Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+
+      <div className="body">
+        {data.map((employee) => {
+          return (
+            <Employee
+              key={uuidv4()}
+              name={employee.name}
+              role={employee.role}
+              img={employee.img}
+              location={employee.location}
+              message={employee.message}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
-
 export default App;
